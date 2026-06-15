@@ -1,7 +1,40 @@
-export default function Home() {
+import HeroSection from "@/components/HeroSection";
+// import {getAllBooks} from @/lib/actions/book.actions;
+import Search from "@/components/Search";
+import BookCard from "@/components/BookCard";
+
+export default async function Home({
+  searchParams,
+}: {
+  SearchParams: Promise<{ query?: string }>;
+}) {
+  // const { query } = await searchParams;
+
+  // const bookResults = await getAllBooks(query);
+  // const books = bookResults.success ? (bookResults.data ?? []) : [];
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      hi
-    </div>
+    <main className="wrapper container">
+      <HeroSection />
+
+      <div className="flex felx-col sm:flex-row sm:items-center justify-between gap-5 mb-10">
+        <h2 className="text-3xl font-serif font-bold text-[#212a3b]">
+          Recent Books
+        </h2>
+        <Search />
+      </div>
+
+      <div className="library-books-grid">
+        {/* {books.map((book) => {
+          <BookCard
+            key={book._id}
+            title={book.title}
+            author={book.author}
+            coverURL={book.coverURL}
+            slug={book.slug}
+          />;
+        })} */}
+      </div>
+    </main>
   );
 }
